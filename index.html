@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orca Swimming Club — Kursus Renang Terbaik</title>
+    <meta name="description" content="Orca Swimming Club menyediakan kursus renang profesional untuk anak-anak, dewasa, dan atlet kompetitif. Bergabunglah sekarang!">
+    <link rel="icon" href="assets/images/logo-orca.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <img src="assets/images/logo-orca.png" alt="Orca Logo" class="preloader-logo">
+            <div class="preloader-wave">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-brand">
+                <img src="assets/images/logo-orca.png" alt="Orca Swimming Club Logo" class="nav-logo">
+                <span class="nav-brand-text">ORCA</span>
+            </a>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="#home" class="nav-link active">Beranda</a></li>
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#team" class="nav-link">Tim</a></li>
+                <li><a href="#programs" class="nav-link">Program</a></li>
+                <li><a href="#gallery" class="nav-link">Galeri</a></li>
+                <li><a href="#locations" class="nav-link">Lokasi</a></li>
+                <li><a href="#schedule" class="nav-link">Jadwal</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimoni</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Hubungi Kami</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero_bg.png" alt="Olympic Swimming Pool" class="hero-bg-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <!-- Animated water ripple -->
+        <div class="water-ripple"></div>
+        <div class="container hero-content">
+            <div class="hero-badge" data-animate="fade-down">
+                <i class="fas fa-award"></i> Klub Renang Terpercaya Sejak 2015
+            </div>
+            <h1 class="hero-title" data-animate="fade-up">
+                Selami Potensimu<br>
+                Bersama <span class="text-gradient">Orca Swimming Club</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                Kursus renang profesional untuk semua usia — Privat, Reguler, dan Prestasi. 
+                Tersedia di 3 lokasi kolam renang dengan pelatih bersertifikat.
+            </p>
+            <div class="hero-actions" data-animate="fade-up" data-delay="400">
+                <a href="#programs" class="btn btn-primary btn-lg">
+                    <i class="fas fa-swimmer"></i> Lihat Program
+                </a>
+                <a href="#contact" class="btn btn-outline btn-lg">
+                    <i class="fas fa-phone-alt"></i> Daftar Sekarang
+                </a>
+            </div>
+            <div class="hero-stats" data-animate="fade-up" data-delay="600">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="3">0</span>
+                    <span class="hero-stat-label">Program Unggulan</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="3">0</span>
+                    <span class="hero-stat-label">Lokasi Kolam Renang</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="7">0</span>
+                    <span class="hero-stat-label">Hari per Minggu</span>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-water"></i> Tentang Kami</span>
+                <h2 class="section-title">Mengapa Memilih <span class="text-gradient">Orca Swimming Club?</span></h2>
+                <p class="section-subtitle">Kami berkomitmen untuk memberikan pengalaman belajar renang terbaik dengan standar keselamatan tertinggi.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card" data-animate="fade-up" data-delay="0">
+                    <div class="about-card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Keamanan Utama</h3>
+                    <p>Kolam renang berstandar internasional dengan sistem keamanan lengkap dan pengawasan ketat di setiap sesi latihan.</p>
+                </div>
+                <div class="about-card" data-animate="fade-up" data-delay="100">
+                    <div class="about-card-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Pelatih Bersertifikat</h3>
+                    <p>Tim pelatih kami bersertifikat nasional & internasional, berpengalaman melatih dari level pemula hingga atlet kompetitif.</p>
+                </div>
+                <div class="about-card" data-animate="fade-up" data-delay="200">
+                    <div class="about-card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Kelas Kecil</h3>
+                    <p>Rasio murid-pelatih yang kecil memastikan setiap peserta mendapatkan perhatian dan bimbingan personal.</p>
+                </div>
+                <div class="about-card" data-animate="fade-up" data-delay="300">
+                    <div class="about-card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Fasilitas Modern</h3>
+                    <p>Kolam indoor dan outdoor berstandar olimpiade, ruang ganti bersih, dan area tunggu yang nyaman untuk orang tua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-users"></i> Tim Kami</span>
+                <h2 class="section-title">Kenali <span class="text-gradient">Tim Orca</span></h2>
+                <p class="section-subtitle">Tim profesional dan berdedikasi yang siap membimbing Anda mencapai potensi terbaik di dalam air.</p>
+            </div>
+            <div class="team-gallery" data-animate="fade-up" data-delay="100">
+                <div class="team-photo-card" data-animate="fade-up" data-delay="100">
+                    <img src="assets/images/tim-1.jpeg" alt="Tim Orca Swimming Club">
+                </div>
+                <div class="team-photo-card" data-animate="fade-up" data-delay="200">
+                    <img src="assets/images/tim-2.jpeg" alt="Tim Orca Swimming Club">
+                </div>
+                <div class="team-photo-card" data-animate="fade-up" data-delay="300">
+                    <img src="assets/images/tim-3.jpeg" alt="Tim Orca Swimming Club">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-swimming-pool"></i> Program Kami</span>
+                <h2 class="section-title">Program Renang untuk <span class="text-gradient">Semua Usia</span></h2>
+                <p class="section-subtitle">Pilih program yang sesuai dengan kebutuhan dan tingkat kemampuan Anda.</p>
+            </div>
+            <div class="programs-grid">
+                <!-- Privat Program -->
+                <div class="program-card" data-animate="fade-up" data-delay="0">
+                    <div class="program-card-image">
+                        <img src="assets/images/kids_swimming.png" alt="Kelas Privat">
+                        <div class="program-card-badge">Eksklusif</div>
+                    </div>
+                    <div class="program-card-body">
+                        <div class="program-card-tag">1-on-1 Coaching</div>
+                        <h3 class="program-card-title">Kelas Privat</h3>
+                        <p class="program-card-desc">Bimbingan personal satu-satu dengan pelatih. Cocok untuk pemula yang ingin belajar cepat atau yang ingin fokus pada teknik tertentu.</p>
+                        <ul class="program-card-features">
+                            <li><i class="fas fa-check-circle"></i> Pelatih personal dedicated</li>
+                            <li><i class="fas fa-check-circle"></i> Jadwal fleksibel</li>
+                            <li><i class="fas fa-check-circle"></i> Progres lebih cepat</li>
+                        </ul>
+                        <div class="program-card-footer">
+                            <a href="#contact" class="btn btn-primary btn-sm">Daftar Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Reguler Program -->
+                <div class="program-card featured" data-animate="fade-up" data-delay="150">
+                    <div class="program-card-image">
+                        <img src="assets/images/adults_swimming.png" alt="Kelas Reguler">
+                        <div class="program-card-badge featured-badge">Populer</div>
+                    </div>
+                    <div class="program-card-body">
+                        <div class="program-card-tag">Semua Usia</div>
+                        <h3 class="program-card-title">Kelas Reguler</h3>
+                        <p class="program-card-desc">Program terstruktur dalam kelompok kecil. Belajar teknik dasar hingga mahir dengan suasana yang menyenangkan dan saling memotivasi.</p>
+                        <ul class="program-card-features">
+                            <li><i class="fas fa-check-circle"></i> Kelompok kecil (maks. 8 orang)</li>
+                            <li><i class="fas fa-check-circle"></i> 4 gaya renang</li>
+                            <li><i class="fas fa-check-circle"></i> Sertifikat kelulusan</li>
+                        </ul>
+                        <div class="program-card-footer">
+                            <a href="#contact" class="btn btn-primary btn-sm">Daftar Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Prestasi Program -->
+                <div class="program-card" data-animate="fade-up" data-delay="300">
+                    <div class="program-card-image">
+                        <img src="assets/images/competitive_swimming.png" alt="Kelas Prestasi">
+                        <div class="program-card-badge">Pro</div>
+                    </div>
+                    <div class="program-card-body">
+                        <div class="program-card-tag">Atlet Kompetitif</div>
+                        <h3 class="program-card-title">Kelas Prestasi</h3>
+                        <p class="program-card-desc">Untuk perenang yang ingin berprestasi di kompetisi. Latihan intensif, teknik lanjutan, dan persiapan kejuaraan resmi.</p>
+                        <ul class="program-card-features">
+                            <li><i class="fas fa-check-circle"></i> Pelatih level nasional</li>
+                            <li><i class="fas fa-check-circle"></i> Program kompetisi</li>
+                            <li><i class="fas fa-check-circle"></i> Analisis teknik profesional</li>
+                        </ul>
+                        <div class="program-card-footer">
+                            <a href="#contact" class="btn btn-primary btn-sm">Daftar Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section" style="background-color: var(--gray-50);">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-camera"></i> Galeri Kegiatan</span>
+                <h2 class="section-title">Dokumentasi <span class="text-gradient">Aktivitas Renang</span></h2>
+                <p class="section-subtitle">Momen keseruan latihan dan kemajuan para peserta didik kami.</p>
+            </div>
+            <div class="activities-grid" id="mainGallery" data-animate="fade-up" data-delay="100">
+                <!-- Javascript will load images from localStorage here, but here are some fallbacks -->
+                <p style="text-align:center; color:var(--gray-500); grid-column: 1/-1;">Belum ada foto kegiatan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="locations section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-map-marker-alt"></i> Lokasi</span>
+                <h2 class="section-title">Lokasi <span class="text-gradient">Kolam Renang</span></h2>
+                <p class="section-subtitle">Kami hadir di 3 lokasi kolam renang untuk kemudahan akses Anda.</p>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card" data-animate="fade-up" data-delay="0">
+                    <div class="location-card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Kolam Renang OCEAN KID's</h3>
+                    <p>Kolam renang yang dirancang khusus ramah anak dengan kedalaman bertahap dan area bermain air.</p>
+                    <div class="location-meta">
+                        <span><i class="fas fa-clock"></i> Setiap Hari</span>
+                        <span><i class="fas fa-swimmer"></i> Privat, Reguler, Prestasi</span>
+                    </div>
+                </div>
+                <div class="location-card" data-animate="fade-up" data-delay="150">
+                    <div class="location-card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Kolam Renang MALINDO</h3>
+                    <p>Kolam renang berstandar nasional dengan fasilitas lengkap, cocok untuk latihan reguler dan kompetisi.</p>
+                    <div class="location-meta">
+                        <span><i class="fas fa-clock"></i> Setiap Hari</span>
+                        <span><i class="fas fa-swimmer"></i> Privat, Reguler, Prestasi</span>
+                    </div>
+                </div>
+                <div class="location-card" data-animate="fade-up" data-delay="300">
+                    <div class="location-card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Kolam Renang BAJAK LAUT</h3>
+                    <p>Kolam renang bertema bajak laut yang seru dan menyenangkan, favorit untuk kelas anak-anak dan keluarga.</p>
+                    <div class="location-meta">
+                        <span><i class="fas fa-clock"></i> Setiap Hari</span>
+                        <span><i class="fas fa-swimmer"></i> Privat, Reguler, Prestasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-calendar-alt"></i> Jadwal</span>
+                <h2 class="section-title">Jadwal <span class="text-gradient">Latihan</span></h2>
+                <p class="section-subtitle">Latihan tersedia setiap hari dengan dua sesi waktu.</p>
+            </div>
+            <div class="schedule-info-cards" data-animate="fade-up" data-delay="100">
+                <div class="schedule-info-card">
+                    <div class="schedule-info-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Setiap Hari</h3>
+                    <p>Senin - Minggu</p>
+                </div>
+                <div class="schedule-info-card">
+                    <div class="schedule-info-icon morning">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Sesi Pagi</h3>
+                    <p>08.00 — 11.00 WIB</p>
+                </div>
+                <div class="schedule-info-card">
+                    <div class="schedule-info-icon afternoon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Sesi Siang</h3>
+                    <p>14.00 — 17.00 WIB</p>
+                </div>
+            </div>
+            <div class="schedule-table-wrapper active" data-animate="fade-up" data-delay="200">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Sesi</th>
+                            <th>Waktu</th>
+                            <th>Program</th>
+                            <th>Lokasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="schedule-badge kids"><i class="fas fa-sun"></i> Pagi</span></td>
+                            <td class="time-cell">08.00 — 11.00</td>
+                            <td>
+                                <span class="schedule-badge adults">Privat</span>
+                                <span class="schedule-badge kids">Reguler</span>
+                                <span class="schedule-badge competitive">Prestasi</span>
+                            </td>
+                            <td>
+                                <div class="schedule-locations">
+                                    <span><i class="fas fa-map-pin"></i> KR. OCEAN KID's</span>
+                                    <span><i class="fas fa-map-pin"></i> KR. MALINDO</span>
+                                    <span><i class="fas fa-map-pin"></i> KR. BAJAK LAUT</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="schedule-badge adults"><i class="fas fa-cloud-sun"></i> Siang</span></td>
+                            <td class="time-cell">14.00 — 17.00</td>
+                            <td>
+                                <span class="schedule-badge adults">Privat</span>
+                                <span class="schedule-badge kids">Reguler</span>
+                                <span class="schedule-badge competitive">Prestasi</span>
+                            </td>
+                            <td>
+                                <div class="schedule-locations">
+                                    <span><i class="fas fa-map-pin"></i> KR. OCEAN KID's</span>
+                                    <span><i class="fas fa-map-pin"></i> KR. MALINDO</span>
+                                    <span><i class="fas fa-map-pin"></i> KR. BAJAK LAUT</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="schedule-note" data-animate="fade-up" data-delay="300">
+                <i class="fas fa-info-circle"></i>
+                <p>Jadwal berlaku <strong>setiap hari</strong> (Senin - Minggu) di semua lokasi kolam renang.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-star"></i> Testimoni</span>
+                <h2 class="section-title">Apa Kata <span class="text-gradient">Mereka?</span></h2>
+                <p class="section-subtitle">Cerita nyata dari orang tua dan peserta kami yang puas.</p>
+            </div>
+            <div class="testimonials-slider" data-animate="fade-up" data-delay="200">
+                <div class="testimonial-track" id="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Anak saya yang tadinya takut air, sekarang sudah bisa berenang 4 gaya dalam 6 bulan! Pelatih-pelatih di Orca sangat sabar dan profesional."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <strong>Ibu Sari</strong>
+                                <span>Orang Tua Murid</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Saya belajar renang di usia 35 tahun dan tidak pernah menyesal memilih Orca. Sekarang renang sudah jadi hobi rutin saya setiap minggu."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <strong>Pak Budi</strong>
+                                <span>Peserta Kelas Dewasa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Berkat program kompetitif Orca, anak saya berhasil meraih medali emas di kejuaraan renang daerah. Terima kasih Orca!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <strong>Pak Andi</strong>
+                                <span>Orang Tua Atlet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"Fasilitas bersih, pelatih ramah, dan jadwal fleksibel. Tiga anak saya semua belajar renang di sini. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <strong>Ibu Dewi</strong>
+                                <span>Orang Tua 3 Murid</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button id="prev-testimonial" class="testimonial-btn" aria-label="Previous testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="testimonial-dots" id="testimonial-dots"></div>
+                    <button id="next-testimonial" class="testimonial-btn" aria-label="Next testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg">
+            <img src="assets/images/hero_bg.png" alt="Swimming Pool" class="cta-bg-img">
+            <div class="cta-overlay"></div>
+        </div>
+        <div class="container cta-content" data-animate="fade-up">
+            <h2 class="cta-title">Siap Untuk Memulai Perjalanan Renang Anda?</h2>
+            <p class="cta-subtitle">Bergabunglah dengan ratusan murid yang sudah mempercayakan pembelajaran renang mereka kepada Orca Swimming Club.</p>
+            <div class="cta-actions">
+                <a href="#contact" class="btn btn-primary btn-lg"><i class="fas fa-swimmer"></i> Daftar Sekarang</a>
+                <a href="https://wa.me/6281234567890" class="btn btn-outline btn-lg" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag"><i class="fas fa-envelope"></i> Kontak</span>
+                <h2 class="section-title">Hubungi <span class="text-gradient">Kami</span></h2>
+                <p class="section-subtitle">Punya pertanyaan? Jangan ragu untuk menghubungi kami atau kunjungi langsung lokasi kami.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info" data-animate="fade-up" data-delay="0">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Lokasi Kolam Renang</h4>
+                            <p>KR. OCEAN KID's<br>KR. MALINDO<br>KR. BAJAK LAUT</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>(021) 1234-5678<br>0812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@orcaswimmingclub.com<br>pendaftaran@orcaswimmingclub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Setiap Hari: 08.00 - 11.00<br>Setiap Hari: 14.00 - 17.00</p>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form" data-animate="fade-up" data-delay="200">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="email@contoh.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">No. Telepon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0812-xxxx-xxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="program">Pilih Program</label>
+                        <select id="program" name="program" required>
+                            <option value="" disabled selected>— Pilih program —</option>
+                            <option value="privat">Kelas Privat</option>
+                            <option value="reguler">Kelas Reguler</option>
+                            <option value="prestasi">Kelas Prestasi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tulis pesan atau pertanyaan Anda..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-full" id="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Kirim Pendaftaran
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo-orca.png" alt="Orca Swimming Club" class="footer-logo">
+                    <p>Orca Swimming Club — tempat terbaik untuk belajar dan mengasah kemampuan renang Anda. Bergabunglah dengan keluarga besar Orca!</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#programs">Program</a></li>
+                        <li><a href="#schedule">Jadwal</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Program</h4>
+                    <ul>
+                        <li><a href="#programs">Kelas Privat</a></li>
+                        <li><a href="#programs">Kelas Reguler</a></li>
+                        <li><a href="#programs">Kelas Prestasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Lokasi</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> KR. OCEAN KID's</li>
+                        <li><i class="fas fa-map-marker-alt"></i> KR. MALINDO</li>
+                        <li><i class="fas fa-map-marker-alt"></i> KR. BAJAK LAUT</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Orca Swimming Club. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>

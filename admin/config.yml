@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main # Atau 'master' jika repositori default Anda bernama master
+
+media_folder: "assets/images/gallery" # Folder penyimpanan foto CMS
+public_folder: "assets/images/gallery" # Relatif path agar output src gambar tepat
+
+collections:
+  - name: "dokumentasi"
+    label: "Dokumentasi & Galeri"
+    files:
+      - file: "data/gallery.json"
+        label: "Galeri Kegiatan"
+        name: "gallery"
+        fields:
+          - label: "Foto-foto Kegiatan"
+            name: "photos"
+            widget: "list"
+            fields:
+              - {label: "Foto", name: "image", widget: "image"}
+              - {label: "Deskripsi (Opsional)", name: "caption", widget: "string", required: false}
