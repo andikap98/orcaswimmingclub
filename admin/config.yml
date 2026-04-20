@@ -2,6 +2,7 @@ backend:
   name: git-gateway
   branch: main # Atau 'master' jika repositori default Anda bernama master
 
+local_backend: true
 media_folder: "assets/images/gallery" # Folder penyimpanan foto CMS
 public_folder: "assets/images/gallery" # Relatif path agar output src gambar tepat
 
