@@ -293,14 +293,37 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
+            // Ambil data form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const program = document.getElementById('program').value || 'Tidak disebutkan';
+            const message = document.getElementById('message').value;
+
+            // Buat template pesan WhatsApp
+            const waText = `Halo admin Orca Swimming Club, saya ingin mendaftar/bertanya: 
+            
+*Nama Lengkap:* ${name}
+*Email:* ${email}
+*No. Telepon:* ${phone}
+*Program Diminati:* ${program}
+*Pesan:* 
+${message}
+            
+Mohon informasinya lebih lanjut. Terima kasih!`;
+
             // Button loading state
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengalihkan ke WhatsApp...';
             submitBtn.disabled = true;
 
-            // Simulate submission
             setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Terkirim!';
+                // Redirect ke wa.me
+                const phoneWa = "6285731555537";
+                const waUrl = `https://wa.me/${phoneWa}?text=${encodeURIComponent(waText)}`;
+                window.open(waUrl, '_blank');
+                
+                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Terkirim via WA!';
                 submitBtn.style.background = 'var(--success)';
 
                 setTimeout(() => {
@@ -309,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.style.background = '';
                     form.reset();
                 }, 3000);
-            }, 1500);
+            }, 1000);
         });
     }
 
