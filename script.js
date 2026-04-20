@@ -16,6 +16,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Load Gallery from Decap CMS JSON ──
     const mainGallery = document.getElementById('mainGallery');
+
+    // Lightbox
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-overlay" id="lightbox-overlay">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Tutup">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Sebelumnya">&#8249;</button>
+            <div class="lightbox-content">
+                <img src="" alt="" id="lightbox-img">
+                <p id="lightbox-caption"></p>
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Berikutnya">&#8250;</button>
+        </div>`;
+    document.body.appendChild(lightbox);
+
+    let galleryPhotos = [];
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+        const overlay = document.getElementById('lightbox-overlay');
+        const img = document.getElementById('lightbox-img');
+        const caption = document.getElementById('lightbox-caption');
+        lightboxIndex = index;
+        img.src = galleryPhotos[index].image;
+        img.alt = galleryPhotos[index].caption || 'Foto Kegiatan Renang';
+        caption.textContent = galleryPhotos[index].caption || '';
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-overlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex = (lightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+        openLightbox(lightboxIndex);
+    });
+    document.getElementById('lightbox-next').addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex = (lightboxIndex + 1) % galleryPhotos.length;
+        openLightbox(lightboxIndex);
+    });
+    document.addEventListener('keydown', (e) => {
+        const overlay = document.getElementById('lightbox-overlay');
+        if (!overlay.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') { lightboxIndex = (lightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length; openLightbox(lightboxIndex); }
+        if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex + 1) % galleryPhotos.length; openLightbox(lightboxIndex); }
+    });
+
     if (mainGallery) {
         fetch('data/gallery.json')
             .then(response => {
@@ -24,13 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 if (data.photos && data.photos.length > 0) {
-                    mainGallery.innerHTML = ''; // Clear fallback text
-                    data.photos.forEach(item => {
-                        // Handle standard Netlify CMS image paths or full urls
-                        const imageSrc = item.image; 
+                    galleryPhotos = data.photos;
+                    mainGallery.innerHTML = '';
+                    data.photos.forEach((item, idx) => {
                         const card = document.createElement('div');
                         card.className = 'gallery-card';
-                        card.innerHTML = `<img src="${imageSrc}" alt="${item.caption || 'Foto Kegiatan Renang'}">`;
+                        card.setAttribute('tabindex', '0');
+                        card.title = item.caption || 'Lihat foto';
+                        card.innerHTML = `
+                            <img src="${item.image}" alt="${item.caption || 'Foto Kegiatan Renang'}" loading="lazy">
+                            ${item.caption ? `<div class="gallery-caption"><i class="fas fa-search-plus"></i> ${item.caption}</div>` : `<div class="gallery-caption"><i class="fas fa-search-plus"></i> Lihat foto</div>`}
+                        `;
+                        card.addEventListener('click', () => openLightbox(idx));
+                        card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightbox(idx); });
                         mainGallery.appendChild(card);
                     });
                 }
