@@ -105,7 +105,7 @@
       background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
       align-items: center;
       justify-content: center;
-      z-index: 9998;
+      z-index: 10000;
       padding: 16px;
       overflow-y: auto;
     }
@@ -362,9 +362,8 @@
     });
 
     window.netlifyIdentity.on('logout', () => {
-      // After logout, show our custom login screen
-      // Re-init the widget so it's ready for a fresh login
-      showLogin();
+      // Reload the page cleanly so Decap CMS resets and login screen appears fresh
+      window.location.replace(window.location.pathname);
     });
 
     window.netlifyIdentity.on('error', err => {
