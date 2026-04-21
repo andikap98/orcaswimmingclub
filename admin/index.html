@@ -105,7 +105,7 @@
       background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
       align-items: center;
       justify-content: center;
-      z-index: 10000;
+      z-index: 999;
       padding: 16px;
       overflow-y: auto;
     }
@@ -228,6 +228,14 @@
     }
     .login-security-note svg { flex-shrink: 0; margin-top: 1px; }
 
+    /* ── Netlify Identity widget always on top ── */
+    [data-netlify-identity-widget],
+    .netlify-identity-widget,
+    [class*="netlify-identity"],
+    div[style*="z-index"] iframe {
+      z-index: 99999 !important;
+    }
+
     /* ── Error banner ── */
     #login-error {
       display: none;
@@ -331,14 +339,21 @@
 
     // ── Open Netlify Identity widget reliably ──
     function openLoginWidget() {
-      // Reset any error
       loginError.classList.remove('show');
-
       if (window.netlifyIdentity) {
-        // Force the widget to open the login tab, not signup
+        // Temporarily lower our overlay so the Identity widget
+        // is fully visible and interactive on top of everything
+        loginScreen.style.zIndex = '1';
         window.netlifyIdentity.open('login');
       }
     }
+
+    // Restore z-index when widget is closed without login
+    ['close', 'error'].forEach(evt => {
+      window.netlifyIdentity.on(evt, () => {
+        loginScreen.style.zIndex = '999';
+      });
+    });
 
     loginBtn.addEventListener('click', openLoginWidget);
     // Also support tap on mobile (prevent double fire)
