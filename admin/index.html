@@ -22,10 +22,15 @@
 
     html, body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: #fff;
       min-height: 100vh;
       -webkit-text-size-adjust: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.login-mode {
+      background: var(--bg);
+      color: #fff;
     }
 
     /* ── Loading Screen ── */
@@ -250,19 +255,13 @@
     }
     #login-error.show { display: block; }
 
-    /* ── Decap CMS iframe fills full viewport on mobile ── */
-    #nc-root iframe,
-    .nc-app-wrapper {
-      max-width: 100% !important;
-    }
-
     /* Netlify Identity widget z-index fix */
     [data-netlify-identity-widget] {
       z-index: 99999 !important;
     }
   </style>
 </head>
-<body>
+<body class="login-mode">
 
   <!-- Loading Screen -->
   <div id="admin-loader">
@@ -367,12 +366,15 @@
       hideLoader();
       if (!user) {
         showLogin();
+      } else {
+        document.body.classList.remove('login-mode');
       }
       // If user exists, Decap CMS handles the UI automatically
     });
 
     window.netlifyIdentity.on('login', user => {
       hideLogin();
+      document.body.classList.remove('login-mode');
       // Let Decap CMS take over — no redirect needed
     });
 
