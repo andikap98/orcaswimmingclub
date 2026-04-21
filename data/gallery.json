@@ -1,10 +1,6 @@
 {
   "photos": [
     {
-      "image": "/assets/images/kegiatan-1.jpeg",
-      "caption": "Momen latihan dan kegiatan renang di kolam."
-    },
-    {
       "image": "/assets/images/kegiatan-2.jpeg",
       "caption": ""
     },
@@ -14,10 +10,6 @@
     },
     {
       "image": "/assets/images/kegiatan-4.jpeg",
-      "caption": ""
-    },
-    {
-      "image": "/assets/images/gallery/whatsapp-image-2026-04-20-at-13.58.03.jpeg",
       "caption": ""
     }
   ]
