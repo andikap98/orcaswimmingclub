@@ -279,7 +279,7 @@
 
     window.netlifyIdentity.on('login', user => {
       loginScreen.classList.remove('show');
-      document.location.href = '/admin/';
+      // Biarkan Decap CMS mengambil alih (jangan di-reload/redirect)
     });
 
     window.netlifyIdentity.on('logout', () => {
