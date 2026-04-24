@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "badge": "Klub Renang Terpercaya Sejak 2015",
+    "title": "Selami Potensimu<br>Bersama <span class=\"text-gradient\">Orca Swimming Club</span>",
+    "subtitle": "Kursus renang profesional untuk semua usia — Privat, Reguler, dan Prestasi. Tersedia di 3 lokasi kolam renang dengan pelatih bersertifikat."
+  },
+  "about": {
+    "subtitle": "Kami berkomitmen untuk memberikan pengalaman belajar renang terbaik dengan standar keselamatan tertinggi.",
+    "cards": [
+      {
+        "icon": "fas fa-shield-alt",
+        "title": "Keamanan Utama",
+        "desc": "Kolam renang berstandar internasional dengan sistem keamanan lengkap dan pengawasan ketat di setiap sesi latihan."
+      },
+      {
+        "icon": "fas fa-medal",
+        "title": "Pelatih Bersertifikat",
+        "desc": "Tim pelatih kami bersertifikat nasional & internasional, berpengalaman melatih dari level pemula hingga atlet kompetitif."
+      },
+      {
+        "icon": "fas fa-users",
+        "title": "Kelas Kecil",
+        "desc": "Rasio murid-pelatih yang kecil memastikan setiap peserta mendapatkan perhatian dan bimbingan personal."
+      },
+      {
+        "icon": "fas fa-building",
+        "title": "Fasilitas Modern",
+        "desc": "Kolam indoor dan outdoor berstandar olimpiade, ruang ganti bersih, dan area tunggu yang nyaman untuk orang tua."
+      }
+    ]
+  },
+  "team": {
+    "subtitle": "Tim profesional dan berdedikasi yang siap membimbing Anda mencapai potensi terbaik di dalam air.",
+    "members": [
+      {"image": "assets/images/tim-1.jpeg", "name": "Pelatih 1"},
+      {"image": "assets/images/tim-2.jpeg", "name": "Pelatih 2"},
+      {"image": "assets/images/tim-3.jpeg", "name": "Pelatih 3"}
+    ]
+  },
+  "programs": {
+    "subtitle": "Pilih program yang sesuai dengan kebutuhan dan tingkat kemampuan Anda.",
+    "items": [
+      {
+        "badge": "Eksklusif",
+        "tag": "1-on-1 Coaching",
+        "title": "Kelas Privat",
+        "desc": "Bimbingan personal satu-satu dengan pelatih. Cocok untuk pemula yang ingin belajar cepat atau yang ingin fokus pada teknik tertentu.",
+        "image": "assets/images/kids_swimming.png",
+        "features": ["Pelatih personal dedicated", "Jadwal fleksibel", "Progres lebih cepat"]
+      },
+      {
+        "badge": "Populer",
+        "tag": "Semua Usia",
+        "title": "Kelas Reguler",
+        "desc": "Program terstruktur dalam kelompok kecil. Belajar teknik dasar hingga mahir dengan suasana yang menyenangkan dan saling memotivasi.",
+        "image": "assets/images/adults_swimming.png",
+        "features": ["Kelompok kecil (maks. 8 orang)", "4 gaya renang", "Sertifikat kelulusan"]
+      },
+      {
+        "badge": "Pro",
+        "tag": "Atlet Kompetitif",
+        "title": "Kelas Prestasi",
+        "desc": "Untuk perenang yang ingin berprestasi di kompetisi. Latihan intensif, teknik lanjutan, dan persiapan kejuaraan resmi.",
+        "image": "assets/images/competitive_swimming.png",
+        "features": ["Pelatih level nasional", "Program kompetisi", "Analisis teknik profesional"]
+      }
+    ]
+  },
+  "contact": {
+    "phone": "0857-3155-5537",
+    "whatsapp_message": "Halo admin Orca Swimming Club, saya ingin mendaftar/bertanya:",
+    "email_1": "info@orcaswimmingclub.com",
+    "email_2": "pendaftaran@orcaswimmingclub.com"
+  },
+  "testimonials": [
+    {
+      "stars": 5,
+      "text": "\"Anak saya yang tadinya takut air, sekarang sudah bisa berenang 4 gaya dalam 6 bulan! Pelatih-pelatih di Orca sangat sabar dan profesional.\"",
+      "name": "Ibu Sari",
+      "role": "Orang Tua Murid"
+    },
+    {
+      "stars": 5,
+      "text": "\"Saya belajar renang di usia 35 tahun dan tidak pernah menyesal memilih Orca. Sekarang renang sudah jadi hobi rutin saya setiap minggu.\"",
+      "name": "Pak Budi",
+      "role": "Peserta Kelas Dewasa"
+    },
+    {
+      "stars": 5,
+      "text": "\"Berkat program kompetitif Orca, anak saya berhasil meraih medali emas di kejuaraan renang daerah. Terima kasih Orca!\"",
+      "name": "Pak Andi",
+      "role": "Orang Tua Atlet"
+    },
+    {
+      "stars": 5,
+      "text": "\"Fasilitas bersih, pelatih ramah, dan jadwal fleksibel. Tiga anak saya semua belajar renang di sini. Highly recommended!\"",
+      "name": "Ibu Dewi",
+      "role": "Orang Tua 3 Murid"
+    }
+  ]
+}

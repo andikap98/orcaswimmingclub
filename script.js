@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     animatedElements.forEach(el => observer.observe(el));
+    window.sharedObserver = observer;
 
     // Observe hero stats for counter trigger
     const heroStats = document.querySelector('.hero-stats');
@@ -262,92 +263,102 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Testimonials slider ──
-    const track = document.getElementById('testimonial-track');
-    const cards = track ? track.querySelectorAll('.testimonial-card') : [];
-    const dotsContainer = document.getElementById('testimonial-dots');
-    const prevBtn = document.getElementById('prev-testimonial');
-    const nextBtn = document.getElementById('next-testimonial');
-    let currentSlide = 0;
-    let autoSlideInterval;
+    window.reinitTestimonials = function() {
+        const track = document.getElementById('testimonial-track');
+        if (!track) return;
+        const cards = track.querySelectorAll('.testimonial-card');
+        const dotsContainer = document.getElementById('testimonial-dots');
+        let prevBtn = document.getElementById('prev-testimonial');
+        let nextBtn = document.getElementById('next-testimonial');
+        let currentSlide = 0;
+        
+        if (window.testiAutoSlideInterval) clearInterval(window.testiAutoSlideInterval);
 
-    function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        cards.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('testimonial-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        });
-    }
-
-    function goToSlide(index) {
-        if (cards.length === 0) return;
-        currentSlide = index;
-        if (currentSlide < 0) currentSlide = cards.length - 1;
-        if (currentSlide >= cards.length) currentSlide = 0;
-
-        const offset = currentSlide * 100;
-        track.style.transform = `translateX(-${offset}%)`;
-
-        // Update dots
-        const dots = dotsContainer ? dotsContainer.querySelectorAll('.testimonial-dot') : [];
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            goToSlide(currentSlide + 1);
-        }, 5000);
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    if (cards.length > 0) {
-        createDots();
-        startAutoSlide();
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentSlide - 1);
-                resetAutoSlide();
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            cards.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('testimonial-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
             });
         }
 
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
+        function goToSlide(index) {
+            if (cards.length === 0) return;
+            currentSlide = index;
+            if (currentSlide < 0) currentSlide = cards.length - 1;
+            if (currentSlide >= cards.length) currentSlide = 0;
+
+            const offset = currentSlide * 100;
+            track.style.transform = `translateX(-${offset}%)`;
+
+            const dots = dotsContainer ? dotsContainer.querySelectorAll('.testimonial-dot') : [];
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function startAutoSlide() {
+            window.testiAutoSlideInterval = setInterval(() => {
                 goToSlide(currentSlide + 1);
-                resetAutoSlide();
-            });
+            }, 5000);
         }
 
-        // Touch/Swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
+        function resetAutoSlide() {
+            clearInterval(window.testiAutoSlideInterval);
+            startAutoSlide();
+        }
 
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
+        if (cards.length > 0) {
+            createDots();
+            startAutoSlide();
 
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    goToSlide(currentSlide + 1);
-                } else {
+            if (prevBtn) {
+                const newPrev = prevBtn.cloneNode(true);
+                prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+                prevBtn = newPrev;
+                prevBtn.addEventListener('click', () => {
                     goToSlide(currentSlide - 1);
-                }
-                resetAutoSlide();
+                    resetAutoSlide();
+                });
             }
-        }, { passive: true });
-    }
+
+            if (nextBtn) {
+                const newNext = nextBtn.cloneNode(true);
+                nextBtn.parentNode.replaceChild(newNext, nextBtn);
+                nextBtn = newNext;
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentSlide + 1);
+                    resetAutoSlide();
+                });
+            }
+
+            // Remove previous touch event listeners if any (hard to remove anonymous functions cleanly so just reassigning)
+            let cloneTrack = track.cloneNode(true);
+            track.parentNode.replaceChild(cloneTrack, track);
+            const actualTrack = cloneTrack;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            actualTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            actualTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) goToSlide(currentSlide + 1);
+                    else goToSlide(currentSlide - 1);
+                    resetAutoSlide();
+                }
+            }, { passive: true });
+        }
+    };
+    window.reinitTestimonials();
 
     // ── Contact form ──
     const form = document.getElementById('contact-form');
@@ -365,16 +376,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value;
 
             // Buat template pesan WhatsApp
-            const waText = `Halo admin Orca Swimming Club, saya ingin mendaftar/bertanya: 
+            let waText = window.whatsappMessageTemplate || `Halo admin Orca Swimming Club, saya ingin mendaftar/bertanya:\n\n*Nama Lengkap:* {name}\n*Email:* {email}\n*No. Telepon:* {phone}\n*Program Diminati:* {program}\n*Pesan:*\n{message}\n\nMohon informasinya lebih lanjut. Terima kasih!`;
             
-*Nama Lengkap:* ${name}
-*Email:* ${email}
-*No. Telepon:* ${phone}
-*Program Diminati:* ${program}
-*Pesan:* 
-${message}
-            
-Mohon informasinya lebih lanjut. Terima kasih!`;
+            waText = waText.replace('{name}', name)
+                           .replace('{email}', email)
+                           .replace('{phone}', phone)
+                           .replace('{program}', program)
+                           .replace('{message}', message);
 
             // Button loading state
             const originalText = submitBtn.innerHTML;
@@ -383,7 +391,7 @@ Mohon informasinya lebih lanjut. Terima kasih!`;
 
             setTimeout(() => {
                 // Redirect ke wa.me
-                const phoneWa = "6285731555537";
+                let phoneWa = window.whatsappPhone || "6285731555537";
                 const waUrl = `https://wa.me/${phoneWa}?text=${encodeURIComponent(waText)}`;
                 window.open(waUrl, '_blank');
                 
@@ -410,4 +418,137 @@ Mohon informasinya lebih lanjut. Terima kasih!`;
             }
         });
     });
+
+    // ── Load Site Content from CMS JSON ──
+    fetch('data/site.json')
+        .then(res => {
+            if (!res.ok) throw new Error('Data CMS tidak ditemukan');
+            return res.json();
+        })
+        .then(data => {
+            // -- Hero --
+            if(data.hero) {
+                const badge = document.querySelector('.hero-badge');
+                if(badge && data.hero.badge) badge.innerHTML = `<i class="fas fa-award"></i> ${data.hero.badge}`;
+                const title = document.querySelector('.hero-title');
+                if(title && data.hero.title) title.innerHTML = data.hero.title;
+                const subtitle = document.querySelector('.hero-subtitle');
+                if(subtitle && data.hero.subtitle) subtitle.innerHTML = data.hero.subtitle;
+            }
+
+            // -- About --
+            if(data.about) {
+                const aboutSubtitle = document.querySelector('#about .section-subtitle');
+                if(aboutSubtitle && data.about.subtitle) aboutSubtitle.textContent = data.about.subtitle;
+                const aboutGrid = document.querySelector('.about-grid');
+                if(aboutGrid && data.about.cards) {
+                    aboutGrid.innerHTML = data.about.cards.map((card, i) => `
+                        <div class="about-card" data-animate="fade-up" data-delay="${i * 100}">
+                            <div class="about-card-icon"><i class="${card.icon}"></i></div>
+                            <h3>${card.title}</h3>
+                            <p>${card.desc}</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // -- Team --
+            if(data.team) {
+                const teamSubtitle = document.querySelector('#team .section-subtitle');
+                if(teamSubtitle && data.team.subtitle) teamSubtitle.textContent = data.team.subtitle;
+                const teamGallery = document.querySelector('.team-gallery');
+                if(teamGallery && data.team.members) {
+                    teamGallery.innerHTML = data.team.members.map((member, i) => `
+                        <div class="team-photo-card" data-animate="fade-up" data-delay="${(i+1) * 100}">
+                            <img src="${member.image}" alt="${member.name}">
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // -- Programs --
+            if(data.programs) {
+                const progSubtitle = document.querySelector('#programs .section-subtitle');
+                if(progSubtitle && data.programs.subtitle) progSubtitle.textContent = data.programs.subtitle;
+                const progGrid = document.querySelector('.programs-grid');
+                if(progGrid && data.programs.items) {
+                    progGrid.innerHTML = data.programs.items.map((item, i) => `
+                        <div class="program-card ${item.badge === 'Populer' ? 'featured' : ''}" data-animate="fade-up" data-delay="${i * 150}">
+                            <div class="program-card-image">
+                                <img src="${item.image}" alt="${item.title}">
+                                ${item.badge ? `<div class="program-card-badge ${item.badge === 'Populer' ? 'featured-badge' : ''}">${item.badge}</div>` : ''}
+                            </div>
+                            <div class="program-card-body">
+                                <div class="program-card-tag">${item.tag}</div>
+                                <h3 class="program-card-title">${item.title}</h3>
+                                <p class="program-card-desc">${item.desc}</p>
+                                <ul class="program-card-features">
+                                    ${(item.features || []).map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+                                </ul>
+                                <div class="program-card-footer">
+                                    <a href="#contact" class="btn btn-primary btn-sm">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // -- Testimonials --
+            if(data.testimonials && Array.isArray(data.testimonials)) {
+                const testTrack = document.getElementById('testimonial-track');
+                if(testTrack) {
+                    testTrack.innerHTML = data.testimonials.map(item => `
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                ${`<i class="fas fa-star"></i>`.repeat(Math.min(5, item.stars || 5))}
+                            </div>
+                            <p class="testimonial-text">${item.text}</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar"><i class="fas fa-user-circle"></i></div>
+                                <div>
+                                    <strong>${item.name}</strong>
+                                    <span>${item.role}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    window.reinitTestimonials();
+                }
+            }
+
+            // -- Contact --
+            if(data.contact) {
+                if(data.contact.phone) {
+                    let phone = data.contact.phone.replace(/[^0-9]/g, '');
+                    if(phone.startsWith('0')) phone = '62' + phone.substring(1);
+                    window.whatsappPhone = phone;
+                    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
+                        a.href = `https://wa.me/${phone}`;
+                        if(a.innerText.includes('08')) {
+                            a.innerHTML = `<i class="fab fa-whatsapp" style="color: #25D366;"></i> ${data.contact.phone}`;
+                        }
+                    });
+                }
+                
+                const emailCards = document.querySelectorAll('.contact-info-card');
+                emailCards.forEach(c => {
+                    if(c.innerHTML.includes('info@orcaswimmingclub.com') || c.innerHTML.includes('Email')) {
+                        const p = c.querySelector('p');
+                        if(p) p.innerHTML = `${data.contact.email_1}<br>${data.contact.email_2 || ''}`;
+                    }
+                });
+
+                if(data.contact.whatsapp_message) {
+                    window.whatsappMessageTemplate = data.contact.whatsapp_message;
+                }
+            }
+
+            // Re-observe new elements
+            if(window.sharedObserver) {
+                document.querySelectorAll('[data-animate]:not(.animated)').forEach(el => window.sharedObserver.observe(el));
+            }
+        })
+        .catch(err => console.log('Menggunakan halaman statis:', err));
 });

@@ -9,7 +9,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+  <script>
+    // Only load Netlify Identity if not on localhost
+    const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname.match(/^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.)/);
+    if (!isLocalHost) {
+      const script = document.createElement('script');
+      script.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+      document.head.appendChild(script);
+    } else {
+      // Mock Netlify Identity for Decap CMS local backend so it doesn't crash expecting it
+      window.netlifyIdentity = {
+        on: () => {},
+        open: () => {},
+        init: () => {},
+        currentUser: () => null,
+        logout: () => {}
+      };
+    }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -259,6 +277,101 @@
     [data-netlify-identity-widget] {
       z-index: 99999 !important;
     }
+
+    /* ── DECAP CMS PREMIUM OVERRIDES ── */
+    /* Mengubah font utama menjadi Inter agar seragam dengan website */
+    #nc-root {
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    /* Mengubah font judul menggunakan Outfit */
+    #nc-root h1, #nc-root h2, #nc-root h3, #nc-root h4, #nc-root h5, #nc-root h6 {
+      font-family: 'Outfit', sans-serif !important;
+    }
+
+    /* Mewarnai header atas (App Bar) dengan gradien warna brand */
+    #nc-root [class*="AppHeader"] {
+      background: linear-gradient(135deg, #0a0f1e, #0d1a3a) !important;
+      border-bottom: 2px solid #38bdf8 !important;
+    }
+
+    /* Teks judul orca di atas header CMS */
+    #nc-root [class*="AppHeader"] a {
+      color: #38bdf8 !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 800 !important;
+      letter-spacing: 1px;
+    }
+
+    /* Mempercantik tampilan kartu koleksi konten */
+    #nc-root [class*="Card"] {
+      border-radius: 12px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+      border: 1px solid #e2e8f0 !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    #nc-root [class*="Card"]:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 16px rgba(56, 189, 248, 0.15) !important;
+    }
+
+    /* Tombol-tombol di dalam CMS */
+    #nc-root button {
+      border-radius: 8px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    /* Tombol Login Lokal Bawaan CMS yang kaku kita rapikan */
+    #nc-root > div > section > button,
+    #nc-root > div > div > button:first-of-type {
+      background: linear-gradient(135deg, var(--blue), var(--indigo)) !important;
+      border: none !important;
+      border-radius: 12px !important;
+      color: white !important;
+      padding: 16px 32px !important;
+      font-size: 1.1rem !important;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.4) !important;
+      cursor: pointer !important;
+      transition: transform 0.2s !important;
+    }
+    #nc-root > div > section > button:hover,
+    #nc-root > div > div > button:first-of-type:hover {
+      transform: translateY(-2px) !important;
+    }
+
+    /* Responsive Mobile Overrides */
+    @media (max-width: 768px) {
+      /* Rapikan padding utama di layar HP (tidak kepotong) */
+      #nc-root [class*="AppMainContainer"] {
+        padding: 12px !important;
+        overflow-x: hidden !important;
+      }
+      
+      /* Sidebar / Menu kiri menjadi tumpukan di atas pada HP */
+      #nc-root [class*="SidebarContainer"] {
+        min-width: 100% !important;
+        margin-bottom: 20px !important;
+        border-right: none !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        padding-bottom: 16px !important;
+      }
+      
+      /* Tata Letak Header Tabel/Daftar menjadi kolom di HP */
+      #nc-root [class*="CollectionTop"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+
+      /* Editor Teks pada layar HP diperbesar tap target-nya */
+      #nc-root [class*="EditorContainer"] {
+        padding: 0 !important;
+      }
+      #nc-root [class*="ControlPaneContainer"] {
+        padding: 12px !important;
+      }
+    }
   </style>
 </head>
 <body class="login-mode">
@@ -322,9 +435,18 @@
     function hideLoader() {
       setTimeout(() => loader.classList.add('hidden'), 2300);
     }
+    
+    // Check if running on local environment
+    const isLocalBackend = window.location.hostname === 'localhost' || window.location.hostname.match(/^(127\.|192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.)/);
 
     // Show login screen helper
     function showLogin() {
+      if (isLocalBackend) {
+          // If local, bypass custom login screen and let Decap CMS handle its own local login
+          hideLoader();
+          document.body.classList.remove('login-mode');
+          return;
+      }
       loginScreen.classList.add('show');
       // Scroll to top so card is fully visible on small screens
       window.scrollTo(0, 0);
@@ -362,33 +484,35 @@
     });
 
     // ── Identity events ──
-    window.netlifyIdentity.on('init', user => {
-      hideLoader();
-      if (!user) {
-        showLogin();
-      } else {
+    if (isLocalBackend) {
+        // If local, immediately bypass UI loader and let Decap CMS take over
+        hideLoader();
         document.body.classList.remove('login-mode');
-      }
-      // If user exists, Decap CMS handles the UI automatically
-    });
+    } else {
+        window.netlifyIdentity.on('init', user => {
+          hideLoader();
+          if (!user) {
+            showLogin();
+          } else {
+            document.body.classList.remove('login-mode');
+          }
+        });
 
-    window.netlifyIdentity.on('login', user => {
-      hideLogin();
-      document.body.classList.remove('login-mode');
-      // Let Decap CMS take over — no redirect needed
-    });
+        window.netlifyIdentity.on('login', user => {
+          hideLogin();
+          document.body.classList.remove('login-mode');
+        });
 
-    window.netlifyIdentity.on('logout', () => {
-      // Reload the page cleanly so Decap CMS resets and login screen appears fresh
-      window.location.replace(window.location.pathname);
-    });
+        window.netlifyIdentity.on('logout', () => {
+          window.location.replace(window.location.pathname);
+        });
 
-    window.netlifyIdentity.on('error', err => {
-      console.error('Netlify Identity error:', err);
-      // Show friendly error message
-      loginError.textContent = '⚠️ Gagal terhubung: ' + (err.message || err);
-      loginError.classList.add('show');
-    });
+        window.netlifyIdentity.on('error', err => {
+          console.error('Netlify Identity error:', err);
+          loginError.textContent = '⚠️ Gagal terhubung: ' + (err.message || err);
+          loginError.classList.add('show');
+        });
+    }
   </script>
 
 </body>

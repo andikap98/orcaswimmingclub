@@ -3,7 +3,7 @@ backend:
   branch: main
 
 # Proxy server untuk development lokal (jalankan: npx decap-server)
-# local_backend: true
+local_backend: true
 
 # Folder tempat gambar tersimpan di repo
 media_folder: "assets/images/gallery"
@@ -16,6 +16,74 @@ site_url: https://orcaswimmingclub.com
 logo_url: /assets/images/logo.png
 
 collections:
+  - name: "pengaturan"
+    label: "⚙️ Pengaturan Website"
+    files:
+      - file: "data/site.json"
+        label: "Konten Halaman Utama"
+        name: "site_content"
+        fields:
+          - label: "Hero Banner"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Badge", name: "badge", widget: "string"}
+              - {label: "Judul Utama", name: "title", widget: "string", hint: "Bisa menggunakan tag HTML seperti <br> atau <span>"}
+              - {label: "Sub Judul Utama", name: "subtitle", widget: "text"}
+          - label: "Tentang Kami"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Sub Judul Tentang", name: "subtitle", widget: "text"}
+              - label: "Keunggulan"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - {label: "Judul", name: "title", widget: "string"}
+                  - {label: "Deskripsi", name: "desc", widget: "text"}
+                  - {label: "Ikon (FontAwesome)", name: "icon", widget: "string", hint: "Contoh: fas fa-medal"}
+          - label: "Tim Kami"
+            name: "team"
+            widget: "object"
+            fields:
+              - {label: "Sub Judul Tim", name: "subtitle", widget: "text"}
+              - label: "Foto Tim"
+                name: "members"
+                widget: "list"
+                fields:
+                  - {label: "Foto", name: "image", widget: "image"}
+                  - {label: "Nama", name: "name", widget: "string"}
+          - label: "Program"
+            name: "programs"
+            widget: "object"
+            fields:
+              - {label: "Sub Judul Program", name: "subtitle", widget: "text"}
+              - label: "Daftar Program"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Bintang / Badge Atas", name: "badge", widget: "string", required: false}
+                  - {label: "Label Kecil", name: "tag", widget: "string"}
+                  - {label: "Nama Program", name: "title", widget: "string"}
+                  - {label: "Deskripsi Singkat", name: "desc", widget: "text"}
+                  - {label: "Gambar Ilustrasi", name: "image", widget: "image"}
+                  - {label: "Fitur / Benefit", name: "features", widget: "list"}
+          - label: "Kontak & Sosmed"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Nomor WhatsApp", name: "phone", widget: "string", hint: "Contoh: 0857-3155-5537"}
+              - {label: "Pesan WhatsApp Default", name: "whatsapp_message", widget: "text"}
+              - {label: "Email Utama", name: "email_1", widget: "string"}
+              - {label: "Email Alternatif", name: "email_2", widget: "string", required: false}
+          - label: "Testimoni"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Teks Testimoni", name: "text", widget: "text"}
+              - {label: "Reviewer", name: "name", widget: "string"}
+              - {label: "Peran / Keterangan", name: "role", widget: "string"}
+              - {label: "Jumlah Bintang", name: "stars", widget: "number", value_type: "int", min: 1, max: 5}
   - name: "galeri"
     label: "📸 Galeri Foto Kegiatan"
     files:
