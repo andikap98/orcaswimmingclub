@@ -1,4 +1,6 @@
 name = "orcaswimmingclub"
 compatibility_date = "2024-04-27"
+main = "worker.js"
+
 [assets]
 directory = "."

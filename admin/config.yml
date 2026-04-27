@@ -2,8 +2,8 @@ backend:
   name: github
   repo: andikap98/orcaswimmingclub
   branch: main
-  auth_type: pkce
-  app_id: Ov23liBup4H6jp0dAYHF
+  base_url: https://orcaswimmingclub.com
+  auth_endpoint: auth
 
 # Folder tempat gambar tersimpan di repo
 media_folder: "assets/images/gallery"
