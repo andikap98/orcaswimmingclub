@@ -9,5 +9,28 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
+  <script>
+    // Batasi upload foto maksimal 500KB
+    const MAX_FILE_SIZE = 500 * 1024; // 500KB dalam bytes
+
+    // Monitor semua file input yang muncul di CMS
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll('input[type="file"]:not([data-validated])').forEach(input => {
+        input.setAttribute('data-validated', 'true');
+        input.addEventListener('change', (e) => {
+          const files = e.target.files;
+          for (let i = 0; i < files.length; i++) {
+            if (files[i].size > MAX_FILE_SIZE) {
+              const sizeMB = (files[i].size / 1024).toFixed(0);
+              alert(`⚠️ File "${files[i].name}" terlalu besar (${sizeMB}KB).\n\nMaksimal ukuran file: 500KB.\nSilakan kompres foto terlebih dahulu.`);
+              e.target.value = '';
+              return;
+            }
+          }
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
 </body>
 </html>
