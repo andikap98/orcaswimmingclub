@@ -220,16 +220,9 @@
     const loginBtn = document.getElementById('login-btn');
     const loginError = document.getElementById('login-error');
 
-    // Cek jika sudah punya session
-    const existingUser = localStorage.getItem('netlify-cms-user');
-    if (existingUser) {
-      try {
-        const parsed = JSON.parse(existingUser);
-        if (parsed.token) {
-          loadCMS();
-        }
-      } catch(e) {}
-    }
+    // Selalu bersihkan token lama saat halaman dimuat
+    // agar tidak ada sisa session dari OAuth sebelumnya
+    localStorage.removeItem('netlify-cms-user');
 
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
