@@ -118,5 +118,49 @@
       "name": "Ibu Dewi",
       "role": "Orang Tua 3 Murid"
     }
-  ]
+  ],
+  "locations": {
+    "subtitle": "Kami hadir di 3 lokasi kolam renang untuk kemudahan akses Anda.",
+    "items": [
+      {
+        "name": "Kolam Renang OCEAN KID's",
+        "desc": "Kolam renang yang dirancang khusus ramah anak dengan kedalaman bertahap dan area bermain air.",
+        "icon": "fas fa-water",
+        "hari": "Setiap Hari",
+        "program": "Privat, Reguler, Prestasi"
+      },
+      {
+        "name": "Kolam Renang MALINDO",
+        "desc": "Kolam renang berstandar nasional dengan fasilitas lengkap, cocok untuk latihan reguler dan kompetisi.",
+        "icon": "fas fa-water",
+        "hari": "Setiap Hari",
+        "program": "Privat, Reguler, Prestasi"
+      },
+      {
+        "name": "Kolam Renang BAJAK LAUT",
+        "desc": "Kolam renang bertema bajak laut yang seru dan menyenangkan, favorit untuk kelas anak-anak dan keluarga.",
+        "icon": "fas fa-water",
+        "hari": "Setiap Hari",
+        "program": "Privat, Reguler, Prestasi"
+      }
+    ]
+  },
+  "schedule": {
+    "subtitle": "Latihan tersedia setiap hari dengan dua sesi waktu.",
+    "note": "Jadwal berlaku setiap hari (Senin - Minggu) di semua lokasi kolam renang.",
+    "sessions": [
+      {
+        "name": "Sesi Pagi",
+        "icon": "fas fa-sun",
+        "waktu": "08.00 — 11.00 WIB",
+        "program": "Privat, Reguler, Prestasi"
+      },
+      {
+        "name": "Sesi Siang",
+        "icon": "fas fa-cloud-sun",
+        "waktu": "14.00 — 17.00 WIB",
+        "program": "Privat, Reguler, Prestasi"
+      }
+    ]
+  }
 }

@@ -545,6 +545,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            // -- Locations --
+            if(data.locations) {
+                const locSubtitle = document.querySelector('#locations .section-subtitle');
+                if(locSubtitle && data.locations.subtitle) locSubtitle.textContent = data.locations.subtitle;
+                const locGrid = document.querySelector('.locations-grid');
+                if(locGrid && data.locations.items) {
+                    locGrid.innerHTML = data.locations.items.map((loc, i) => `
+                        <div class="location-card" data-animate="fade-up" data-delay="${i * 150}">
+                            <div class="location-card-icon">
+                                <i class="${loc.icon}"></i>
+                            </div>
+                            <h3>${loc.name}</h3>
+                            <p>${loc.desc}</p>
+                            <div class="location-meta">
+                                <span><i class="fas fa-clock"></i> ${loc.hari}</span>
+                                <span><i class="fas fa-swimmer"></i> ${loc.program}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                // Update footer locations
+                const footerLoc = document.querySelectorAll('.footer-links');
+                footerLoc.forEach(fl => {
+                    const h4 = fl.querySelector('h4');
+                    if(h4 && h4.textContent === 'Lokasi') {
+                        fl.querySelector('ul').innerHTML = data.locations.items.map(loc =>
+                            `<li><i class="fas fa-map-marker-alt"></i> ${loc.name}</li>`
+                        ).join('');
+                    }
+                });
+            }
+
+            // -- Schedule --
+            if(data.schedule) {
+                const schedSubtitle = document.querySelector('#schedule .section-subtitle');
+                if(schedSubtitle && data.schedule.subtitle) schedSubtitle.textContent = data.schedule.subtitle;
+                const schedInfoCards = document.querySelector('.schedule-info-cards');
+                if(schedInfoCards && data.schedule.sessions) {
+                    // First card is "Setiap Hari"
+                    let cardsHtml = `
+                        <div class="schedule-info-card">
+                            <div class="schedule-info-icon"><i class="fas fa-calendar-check"></i></div>
+                            <h3>Setiap Hari</h3>
+                            <p>Senin - Minggu</p>
+                        </div>`;
+                    data.schedule.sessions.forEach(s => {
+                        cardsHtml += `
+                        <div class="schedule-info-card">
+                            <div class="schedule-info-icon"><i class="${s.icon}"></i></div>
+                            <h3>${s.name}</h3>
+                            <p>${s.waktu}</p>
+                        </div>`;
+                    });
+                    schedInfoCards.innerHTML = cardsHtml;
+                }
+                const schedNote = document.querySelector('.schedule-note p');
+                if(schedNote && data.schedule.note) schedNote.innerHTML = data.schedule.note;
+            }
+
             // Re-observe new elements
             if(window.sharedObserver) {
                 document.querySelectorAll('[data-animate]:not(.animated)').forEach(el => window.sharedObserver.observe(el));

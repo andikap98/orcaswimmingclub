@@ -83,6 +83,34 @@ collections:
               - {label: "Reviewer", name: "name", widget: "string"}
               - {label: "Peran / Keterangan", name: "role", widget: "string"}
               - {label: "Jumlah Bintang", name: "stars", widget: "number", value_type: "int", min: 1, max: 5}
+          - label: "Lokasi Kolam Renang"
+            name: "locations"
+            widget: "object"
+            fields:
+              - {label: "Sub Judul Lokasi", name: "subtitle", widget: "text"}
+              - label: "Daftar Lokasi"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Nama Kolam Renang", name: "name", widget: "string"}
+                  - {label: "Deskripsi", name: "desc", widget: "text"}
+                  - {label: "Ikon (FontAwesome)", name: "icon", widget: "string", hint: "Contoh: fas fa-water"}
+                  - {label: "Hari Operasional", name: "hari", widget: "string"}
+                  - {label: "Program Tersedia", name: "program", widget: "string"}
+          - label: "Jadwal Latihan"
+            name: "schedule"
+            widget: "object"
+            fields:
+              - {label: "Sub Judul Jadwal", name: "subtitle", widget: "text"}
+              - {label: "Catatan Jadwal", name: "note", widget: "text"}
+              - label: "Daftar Sesi"
+                name: "sessions"
+                widget: "list"
+                fields:
+                  - {label: "Nama Sesi", name: "name", widget: "string", hint: "Contoh: Sesi Pagi"}
+                  - {label: "Ikon (FontAwesome)", name: "icon", widget: "string", hint: "Contoh: fas fa-sun"}
+                  - {label: "Waktu", name: "waktu", widget: "string", hint: "Contoh: 08.00 — 11.00 WIB"}
+                  - {label: "Program Tersedia", name: "program", widget: "string"}
   - name: "galeri"
     label: "📸 Galeri Foto Kegiatan"
     files:
