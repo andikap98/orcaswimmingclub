@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: andikap98/orcaswimmingclub
   branch: main
 
-# Proxy server untuk development lokal (jalankan: npx decap-server)
+# Proxy server untuk development lokal
 local_backend: true
 
 # Folder tempat gambar tersimpan di repo
