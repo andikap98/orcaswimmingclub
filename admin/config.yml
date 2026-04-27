@@ -101,7 +101,7 @@ collections:
               - label: "Upload Foto"
                 name: "image"
                 widget: "image"
-                allow_multiple: false
+                multiple: false
                 hint: "Format: JPG, PNG, WebP. Ukuran ideal: landscape 4:3 atau 16:9."
               - label: "Deskripsi Foto"
                 name: "caption"
