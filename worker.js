@@ -2,6 +2,27 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // ── Auth popup: tutup otomatis karena sudah login via form ──
+    if (url.pathname === '/auth') {
+      return new Response(`<!DOCTYPE html><html><body>
+        <p>Sudah terautentikasi. Menutup...</p>
+        <script>
+          if (window.opener) {
+            var token = JSON.parse(localStorage.getItem('netlify-cms-user') || '{}').token;
+            if (token) {
+              window.opener.postMessage(
+                'authorization:github:success:' + JSON.stringify({token: token, provider: 'github'}),
+                '*'
+              );
+            }
+          }
+          window.close();
+        </script>
+      </body></html>`, {
+        headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+      });
+    }
+
     // ── Admin Login: Verifikasi email + password ──
     if (url.pathname === '/admin/login' && request.method === 'POST') {
       try {
