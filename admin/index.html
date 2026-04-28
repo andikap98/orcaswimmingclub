@@ -6,6 +6,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>Admin Panel — Orca Swimming Club</title>
   <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link href="config.yml" type="text/yaml" rel="cms-config-url">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
@@ -222,7 +223,7 @@
 
     // Selalu bersihkan token lama saat halaman dimuat
     // agar tidak ada sisa session dari OAuth sebelumnya
-    localStorage.removeItem('netlify-cms-user');
+    localStorage.removeItem('decap-cms-user');
 
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -248,7 +249,7 @@
         }
 
         // Simpan auth token untuk Decap CMS
-        localStorage.setItem('netlify-cms-user', JSON.stringify({
+        localStorage.setItem('decap-cms-user', JSON.stringify({
           login: data.login,
           token: data.token,
           name: data.name,
@@ -270,9 +271,9 @@
       document.getElementById('login-screen').classList.add('hidden');
       document.body.classList.remove('login-mode');
 
-      // Muat Decap CMS
+      // Muat Decap CMS dari file lokal untuk menghindari blokir Tracking Prevention browser
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js';
+      script.src = 'decap-cms.js';
       document.body.appendChild(script);
 
       // Batasi upload foto maksimal 500KB

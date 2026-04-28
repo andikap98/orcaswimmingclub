@@ -8,7 +8,7 @@ export default {
         <p>Sudah terautentikasi. Menutup...</p>
         <script>
           if (window.opener) {
-            var token = JSON.parse(localStorage.getItem('netlify-cms-user') || '{}').token;
+            var token = JSON.parse(localStorage.getItem('decap-cms-user') || '{}').token;
             if (token) {
               window.opener.postMessage(
                 'authorization:github:success:' + JSON.stringify({token: token, provider: 'github'}),
@@ -30,11 +30,35 @@ export default {
 
         // Cek email dan password
         if (email === env.ADMIN_EMAIL && password === env.ADMIN_PASSWORD) {
+          if (!env.GITHUB_PAT) {
+            return new Response(
+              JSON.stringify({ error: 'Konfigurasi server tidak lengkap: GITHUB_PAT hilang.' }),
+              { status: 500, headers: { 'Content-Type': 'application/json' } }
+            );
+          }
+
+          // Verifikasi token GitHub
+          const ghRes = await fetch('https://api.github.com/user', {
+            headers: {
+              'Authorization': 'Bearer ' + env.GITHUB_PAT,
+              'User-Agent': 'Orca-CMS'
+            }
+          });
+
+          if (!ghRes.ok) {
+            return new Response(
+              JSON.stringify({ error: 'Token GITHUB_PAT tidak valid atau sudah expired.' }),
+              { status: 500, headers: { 'Content-Type': 'application/json' } }
+            );
+          }
+
+          const ghUser = await ghRes.json();
+
           return new Response(
             JSON.stringify({
               token: env.GITHUB_PAT,
-              login: env.GITHUB_USERNAME || 'admin',
-              name: 'Admin Orca',
+              login: ghUser.login || env.GITHUB_USERNAME || 'admin',
+              name: ghUser.name || 'Admin Orca',
             }),
             {
               headers: {
