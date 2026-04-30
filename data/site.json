@@ -51,9 +51,9 @@
     "items": [
       {
         "badge": "Eksklusif",
-        "tag": "2-on-1 Coaching",
+        "tag": "1-on-1 Coaching",
         "title": "Kelas Privat",
-        "desc": "Bimbingan personal dengan 1 pelatih 2 siswa. Cocok untuk pemula yang ingin belajar cepat atau yang ingin fokus pada teknik tertentu.",
+        "desc": "Bimbingan personal dengan 1 pelatih 1 siswa. Cocok untuk pemula yang ingin belajar cepat atau yang ingin fokus pada teknik tertentu.",
         "image": "/assets/images/gallery/privat-2-.jpg",
         "features": [
           "Pelatih personal dedicated",
@@ -65,7 +65,7 @@
         "badge": "Populer",
         "tag": "Semua Usia",
         "title": "Kelas Reguler",
-        "desc": "Program terstruktur dalam kelompok kecil (1 coach dengan siswa 5-10 atlet). Belajar teknik dasar hingga mahir dengan suasana yang menyenangkan dan saling memotivasi.",
+        "desc": "Program terstruktur dalam kelompok kecil (1 coach dengan siswa 10-20 siswa). Belajar teknik dasar hingga mahir dengan suasana yang menyenangkan dan saling memotivasi.",
         "image": "/assets/images/gallery/whatsapp-image-2026-04-20-at-13.58.03.jpeg",
         "features": [
           "Kelompok kecil (5 - 10 orang)",
