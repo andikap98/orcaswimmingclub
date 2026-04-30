@@ -131,17 +131,17 @@
       },
       {
         "name": "Kolam Renang MALINDO",
-        "desc": "Kolam renang berstandar nasional dengan fasilitas lengkap, cocok untuk latihan reguler dan kompetisi.",
+        "desc": "Kolam renang berstandar dengan fasilitas lengkap, cocok untuk latihan reguler dan kompetisi.",
         "icon": "fas fa-water",
-        "hari": "Setiap Hari",
+        "hari": "Setiap Hari Selasa dan Kamis (Pukul 14.00 - 17.00)",
         "program": "Privat, Reguler, Prestasi"
       },
       {
         "name": "Kolam Renang BAJAK LAUT",
         "desc": "Kolam renang bertema bajak laut yang seru dan menyenangkan, favorit untuk kelas anak-anak dan keluarga.",
         "icon": "fas fa-water",
-        "hari": "Setiap Hari",
-        "program": "Privat, Reguler, Prestasi"
+        "hari": "Setiap Hari Jum'at dan Minggu (Pukul 14.00 - 17.00)",
+        "program": "Privat dan Reguler"
       },
       {
         "name": "Kolam Renang WAGOS GOSARI",
