@@ -34,15 +34,27 @@
     "members": [
       {
         "image": "/assets/images/tim-2.jpeg",
-        "name": "Pelatih 2"
+        "name": "Tim 1"
       },
       {
         "image": "/assets/images/tim-3.jpeg",
-        "name": "Pelatih 3"
+        "name": "Tim 2"
       },
       {
         "image": "/assets/images/gallery/img-20250810-wa0046-1-.jpg",
-        "name": "Pelatih 4"
+        "name": "Tim 3"
+      },
+      {
+        "image": "/assets/images/gallery/img-20250810-wa0041-1-.jpg",
+        "name": "Tim 4"
+      },
+      {
+        "image": "/assets/images/gallery/img-20250810-wa0032-1-1-.jpg",
+        "name": "Tim 5"
+      },
+      {
+        "image": "/assets/images/gallery/img-20250810-wa0040-1-.jpg",
+        "name": "Tim 6"
       }
     ]
   },
