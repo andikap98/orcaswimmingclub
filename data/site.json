@@ -142,6 +142,20 @@
         "icon": "fas fa-water",
         "hari": "Setiap Hari",
         "program": "Privat, Reguler, Prestasi"
+      },
+      {
+        "name": "Kolam Renang WAGOS GOSARI",
+        "desc": "Kolam renang  yang seru dan menyenangkan, favorit untuk kelas anak-anak dan keluarga.",
+        "icon": "fas fa-water",
+        "hari": "Jum'at (Pukul 14.00 - 16.00) dan Minguu (Pukul (08.00 - 11.00)",
+        "program": "Privat"
+      },
+      {
+        "name": "Kolam Renang SENDANG SUCI",
+        "icon": "fas fa-water",
+        "hari": "Setiap Hari Rabu dan Sabtu (Pukul 14.00 - 16.00)",
+        "program": "Private",
+        "desc": "Kolam renang  yang seru dan menyenangkan, favorit untuk kelas anak-anak di wilayah suci manyar gresik"
       }
     ]
   },
