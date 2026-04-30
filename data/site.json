@@ -33,15 +33,15 @@
     "subtitle": "Tim profesional dan berdedikasi yang siap membimbing Anda mencapai potensi terbaik di dalam air.",
     "members": [
       {
-        "image": "assets/images/tim-1.jpeg",
+        "image": "/assets/images/tim-1.jpeg",
         "name": "Pelatih 1"
       },
       {
-        "image": "assets/images/tim-2.jpeg",
+        "image": "/assets/images/tim-2.jpeg",
         "name": "Pelatih 2"
       },
       {
-        "image": "assets/images/tim-3.jpeg",
+        "image": "/assets/images/tim-3.jpeg",
         "name": "Pelatih 3"
       }
     ]
@@ -54,7 +54,7 @@
         "tag": "2-on-1 Coaching",
         "title": "Kelas Privat",
         "desc": "Bimbingan personal dengan 1 pelatih 2 siswa. Cocok untuk pemula yang ingin belajar cepat atau yang ingin fokus pada teknik tertentu.",
-        "image": "assets/images/kids_swimming.png",
+        "image": "/assets/images/kids_swimming.png",
         "features": [
           "Pelatih personal dedicated",
           "Jadwal fleksibel",
@@ -66,7 +66,7 @@
         "tag": "Semua Usia",
         "title": "Kelas Reguler",
         "desc": "Program terstruktur dalam kelompok kecil (1 coach dengan siswa 5-10 atlet). Belajar teknik dasar hingga mahir dengan suasana yang menyenangkan dan saling memotivasi.",
-        "image": "assets/images/adults_swimming.png",
+        "image": "/assets/images/adults_swimming.png",
         "features": [
           "Kelompok kecil (5 - 10 orang)",
           "mempelajari minimal 2 gaya renang",
@@ -78,7 +78,7 @@
         "tag": "Atlet Kompetitif",
         "title": "Kelas Prestasi",
         "desc": "Untuk perenang yang ingin berprestasi di kompetisi. Latihan intensif, teknik lanjutan, dan persiapan menguikuti lombanrenang.",
-        "image": "assets/images/competitive_swimming.png",
+        "image": "/assets/images/competitive_swimming.png",
         "features": [
           "Pelatih berlisensi",
           "Program kompetisi",
