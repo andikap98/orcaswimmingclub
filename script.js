@@ -547,14 +547,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // -- Locations --
             if(data.locations) {
+                const locItems = data.locations.items || [];
+                const locCount = locItems.length;
+
+                // Update hero stats counter (Lokasi Kolam Renang)
+                document.querySelectorAll('.hero-stat-number[data-count]').forEach(stat => {
+                    const label = stat.nextElementSibling;
+                    if(label && label.textContent.includes('Lokasi')) {
+                        stat.setAttribute('data-count', locCount);
+                        stat.textContent = locCount;
+                    }
+                });
+
+                // Update hero subtitle (jumlah lokasi)
+                const heroSub = document.querySelector('.hero-subtitle');
+                if(heroSub) {
+                    heroSub.innerHTML = heroSub.innerHTML.replace(/di \d+ lokasi/g, `di ${locCount} lokasi`);
+                }
+
+                // Update locations section subtitle
                 const locSubtitle = document.querySelector('#locations .section-subtitle');
                 if(locSubtitle && data.locations.subtitle) locSubtitle.textContent = data.locations.subtitle;
+
+                // Render location cards
                 const locGrid = document.querySelector('.locations-grid');
-                if(locGrid && data.locations.items) {
-                    locGrid.innerHTML = data.locations.items.map((loc, i) => `
+                if(locGrid) {
+                    locGrid.innerHTML = locItems.map((loc, i) => `
                         <div class="location-card" data-animate="fade-up" data-delay="${i * 150}">
                             <div class="location-card-icon">
-                                <i class="${loc.icon}"></i>
+                                <i class="${loc.icon || 'fas fa-water'}"></i>
                             </div>
                             <h3>${loc.name}</h3>
                             <p>${loc.desc}</p>
@@ -565,12 +586,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `).join('');
                 }
+
+                // Update schedule table locations (all schedule-locations divs)
+                const scheduleLocDivs = document.querySelectorAll('.schedule-locations');
+                scheduleLocDivs.forEach(div => {
+                    div.innerHTML = locItems.map(loc =>
+                        `<span><i class="fas fa-map-pin"></i> ${loc.name}</span>`
+                    ).join('');
+                });
+
+                // Update contact info card (Lokasi Kolam Renang)
+                const contactCards = document.querySelectorAll('.contact-info-card');
+                contactCards.forEach(card => {
+                    const h4 = card.querySelector('h4');
+                    if(h4 && h4.textContent.includes('Lokasi')) {
+                        const p = card.querySelector('p');
+                        if(p) p.innerHTML = locItems.map(loc => loc.name).join('<br>');
+                    }
+                });
+
                 // Update footer locations
                 const footerLoc = document.querySelectorAll('.footer-links');
                 footerLoc.forEach(fl => {
                     const h4 = fl.querySelector('h4');
                     if(h4 && h4.textContent === 'Lokasi') {
-                        fl.querySelector('ul').innerHTML = data.locations.items.map(loc =>
+                        fl.querySelector('ul').innerHTML = locItems.map(loc =>
                             `<li><i class="fas fa-map-marker-alt"></i> ${loc.name}</li>`
                         ).join('');
                     }
