@@ -555,7 +555,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const label = stat.nextElementSibling;
                     if(label && label.textContent.includes('Lokasi')) {
                         stat.setAttribute('data-count', locCount);
-                        stat.textContent = locCount;
+                        // Force re-animate counter to new value
+                        const duration = 1000;
+                        const step = locCount / (duration / 16);
+                        let current = 0;
+                        const reAnimate = () => {
+                            current += step;
+                            if(current < locCount) {
+                                stat.textContent = Math.floor(current);
+                                requestAnimationFrame(reAnimate);
+                            } else {
+                                stat.textContent = locCount;
+                            }
+                        };
+                        reAnimate();
                     }
                 });
 
