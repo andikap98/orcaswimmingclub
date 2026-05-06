@@ -179,28 +179,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.hero-stat-number[data-count]');
     let counterAnimated = false;
 
+    function animateSingleCounter(counter) {
+        // Cancel any existing animation on this counter
+        if(counter._counterAnimId) cancelAnimationFrame(counter._counterAnimId);
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+
+        const updateCounter = () => {
+            current += step;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                counter._counterAnimId = requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+                counter._counterAnimId = null;
+            }
+        };
+
+        updateCounter();
+    }
+
     function animateCounters() {
         if (counterAnimated) return;
-
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-count'));
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += step;
-                if (current < target) {
-                    counter.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.textContent = target;
-                }
-            };
-
-            updateCounter();
-        });
-
+        counters.forEach(counter => animateSingleCounter(counter));
         counterAnimated = true;
     }
 
@@ -555,20 +558,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const label = stat.nextElementSibling;
                     if(label && label.textContent.includes('Lokasi')) {
                         stat.setAttribute('data-count', locCount);
-                        // Force re-animate counter to new value
-                        const duration = 1000;
-                        const step = locCount / (duration / 16);
-                        let current = 0;
-                        const reAnimate = () => {
-                            current += step;
-                            if(current < locCount) {
-                                stat.textContent = Math.floor(current);
-                                requestAnimationFrame(reAnimate);
-                            } else {
-                                stat.textContent = locCount;
-                            }
-                        };
-                        reAnimate();
+                        // Cancel old animation and re-animate with new value
+                        animateSingleCounter(stat);
                     }
                 });
 
